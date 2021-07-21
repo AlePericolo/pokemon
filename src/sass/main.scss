@@ -1,0 +1,20 @@
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+@import "./_variables";
+
+@import "./components/_layout";
+@import "./components/_card";
+
+@import "./pages/_pokemon";
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+
+html,
+body {
+	font-family: 'Lato';
+	margin: 0;
+	font-family: monospace;
+	height:100%;
+}
