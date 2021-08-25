@@ -6,7 +6,7 @@ import Footer from "../common/footer";
 
 const Layout = (props) => {
 
-	const { sex } = useSelector(state => state.app)
+	const { sex } = useSelector(state => state.app.user)
 
 	return (
 		<>

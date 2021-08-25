@@ -2,8 +2,13 @@ import * as actions from './types';
 
 const initial = {
 	app: {
-		favorite: null,
-		sex: null,
+		user: {
+			name: null,
+			sex: null
+		},
+		pokemon: {
+			favorite: null
+		},
 		modal: false
 	}
 };
@@ -13,13 +18,18 @@ const app = (state = initial.app, action) => {
 		case actions.SET_FAVORITE: {
 			return {
 				...state,
-				favorite: action.payload
+				pokemon: {
+					favorite: action.payload
+				}
 			};
 		}
-		case actions.SET_SEX: {
+		case actions.SET_USER_INFO: {
 			return {
 				...state,
-				sex: action.payload
+				user: {
+					name: action.payload.name,
+					sex: action.payload.sex
+				}
 			};
 		}
 		case actions.MODAL: {

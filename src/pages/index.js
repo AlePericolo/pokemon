@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Dashboard from '../components/dashboard';
 import Pokedex from '../components/pokedex';
 
 const Home = () => {
@@ -8,12 +9,10 @@ const Home = () => {
     const renderSection = () => {
         switch (nav) {
             case 1:
-                return <h1 className="text-center">PokeApp {nav}</h1>;
+                return <Dashboard />;
             case 2:
                 return <Pokedex />;
             case 3:
-                return null;
-            case 4:
                 return null;
         }
     }
@@ -31,9 +30,6 @@ const Home = () => {
                         </li>
                         <li className="nav-item">
                             <div className={`nav-link ${nav === 3 ? 'active' : ''}`} role="button" onClick={() => setNav(3)}>Search</div>
-                        </li>
-                        <li className="nav-item">
-                            <div className={`nav-link ${nav === 4 ? 'active' : ''}`} role="button" onClick={() => setNav(4)}>Sex</div>
                         </li>
                     </ul>
                 </div>

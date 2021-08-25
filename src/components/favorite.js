@@ -8,7 +8,7 @@ const Favorite = () => {
 
     const router = useRouter()
 
-    const { favorite } = useSelector(state => state.app)
+    const { favorite } = useSelector(state => state.app.pokemon)
 
     return (
         <button className="btn btn-lg btn-light text-danger mx-1"
