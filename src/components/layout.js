@@ -6,20 +6,18 @@ import Footer from "../common/footer";
 
 const Layout = (props) => {
 
-    const { sex } = useSelector(state => state.app)
+	const { sex } = useSelector(state => state.app)
 
 	return (
-		<div className="wrapper">
+		<>
 			<Header />
-			<div className={`content ${sex}`}>
-				<div className="data-container">
-					<div className="contianer-fluid">
-						{props.children}
-					</div>
+			<main role="main" className={`${sex ? sex : ''}`}>
+				<div className="container-fluid py-3">
+					{props.children}
 				</div>
-			</div>
+			</main>
 			<Footer />
-		</div>
+		</>
 	);
 };
 

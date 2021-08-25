@@ -10,9 +10,9 @@ const Home = () => {
             case 1:
                 return <h1 className="text-center">PokeApp {nav}</h1>;
             case 2:
-                return null;
+                return <Pokedex />;
             case 3:
-                return <Pokedex />
+                return null;
             case 4:
                 return null;
         }
@@ -21,23 +21,25 @@ const Home = () => {
     return (
         <>
             <div className="row">
-                <div className="col-12">
+                <div className="col">
                     <ul className="nav nav-tabs">
                         <li className="nav-item">
-                            <div className={`nav-link ${nav === 1 ? 'active' : ''}`} onClick={() => setNav(1)}>Home</div>
+                            <div className={`nav-link ${nav === 1 ? 'active' : ''}`} role="button" onClick={() => setNav(1)}>Home</div>
                         </li>
                         <li className="nav-item">
-                            <div className={`nav-link ${nav === 2 ? 'active' : ''}`} onClick={() => setNav(2)}>Sex</div>
+                            <div className={`nav-link ${nav === 2 ? 'active' : ''}`} role="button" onClick={() => setNav(2)}>Pokedex</div>
                         </li>
                         <li className="nav-item">
-                            <div className={`nav-link ${nav === 3 ? 'active' : ''}`} onClick={() => setNav(3)}>Pokedex</div>
+                            <div className={`nav-link ${nav === 3 ? 'active' : ''}`} role="button" onClick={() => setNav(3)}>Search</div>
                         </li>
                         <li className="nav-item">
-                            <div className={`nav-link ${nav === 4 ? 'active' : ''}`} onClick={() => setNav(4)}>Search</div>
+                            <div className={`nav-link ${nav === 4 ? 'active' : ''}`} role="button" onClick={() => setNav(4)}>Sex</div>
                         </li>
                     </ul>
                 </div>
-                <div className="col-12">
+            </div>
+            <div className="row">
+                <div className="col">
                     {renderSection()}
                 </div>
             </div>

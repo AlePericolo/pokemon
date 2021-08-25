@@ -9,22 +9,22 @@ const Header = () => {
     const router = useRouter()
 
     return (
-        <div className="header">
-            <div className="container-fluid bg-danger">
+        <header>
+            <div className="container-fluid">
                 <div className="row">
-                    <div className="col-12 col-md-3 offset-md-1 text-light m-auto text-center text-md-left p-2">
+                    <div className="col-12 col-sm-3 offset-sm-1 m-auto text-center text-sm-left p-sm-2">
                         <CgPokemon />PokèApp
                     </div>
-                    <div className="col-12 col-md-4 text-center">
-                        <img className="img-responsive p-3" src="/assets/images/logo.png" width="300" role="button" onClick={() => router.push('/')} />
+                    <div className="col-6 col-sm-4 text-center">
+                        <img className="img-responsive p-sm-3" src="/assets/images/logo.png" role="button" onClick={() => router.push('/')} />
                     </div>
-                    <div className="col-12 col-md-3 m-auto text-center text-md-right p-2">
+                    <div className="col-6 col-sm-3 m-auto text-right p-sm-2">
                         <Random />
                         <Favorite />
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 

@@ -3,15 +3,15 @@ import React from 'react';
 const Footer = () => {
 
     return (
-        <div className="footer">
-            <div className="container-fluid bg-danger">
+        <footer>
+            <div className="container-fluid">
                 <div className="row">
-                    <div className="col text-center text-warning">
+                    <div className="col text-center">
                         Gotta Catch'em All
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 
