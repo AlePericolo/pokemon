@@ -1,5 +1,7 @@
 import React from 'react';
-import { fetchPokedex } from "../api/rest";
+import { useRouter } from 'next/router';
+
+import { fetchPokedex } from "../../api/rest";
 import { isNil } from 'lodash';
 
 export async function getServerSideProps() {
@@ -11,8 +13,8 @@ export async function getServerSideProps() {
 }
 
 const Pokedex = ({ data }) => {
-    console.log("POKEDEX", data)
-
+    const router = useRouter()
+    
     if (isNil(data)) return null;
 
     return (
