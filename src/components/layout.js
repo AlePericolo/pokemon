@@ -6,12 +6,12 @@ import Footer from "../common/footer";
 
 const Layout = (props) => {
 
-	const { sex } = useSelector(state => state.app.user)
+	const { gender } = useSelector(state => state.app.user)
 
 	return (
 		<>
 			<Header />
-			<main role="main" className={`${sex ? sex : ''}`}>
+			<main role="main" className={`${gender ? gender : ''}`}>
 				<div className="container-fluid py-3">
 					{props.children}
 				</div>

@@ -1,0 +1,7 @@
+.dashboard {
+    @media only screen and (max-width: map-get($grid-breakpts, "sm")) {
+        .oak {
+            width: 150px;
+        }
+    }
+}

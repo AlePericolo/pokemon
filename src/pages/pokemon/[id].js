@@ -24,7 +24,6 @@ const Pokemon = ({ data }) => {
     const [abilities, setAbilities] = useState(false)
     const [stats, setStats] = useState(false)
 
-    console.log(data)
     const type = data.types[0].type.name;
     
     return (

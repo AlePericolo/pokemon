@@ -4,7 +4,7 @@ const initial = {
 	app: {
 		user: {
 			name: null,
-			sex: null
+			gender: null
 		},
 		pokemon: {
 			favorite: null
@@ -28,7 +28,7 @@ const app = (state = initial.app, action) => {
 				...state,
 				user: {
 					name: action.payload.name,
-					sex: action.payload.sex
+					gender: action.payload.gender
 				}
 			};
 		}
