@@ -11,6 +11,7 @@ export async function getServerSideProps() {
 }
 
 const Pokedex = ({ data }) => {
+    console.log("POKEDEX", data)
 
     if (isNil(data)) return null;
 
@@ -25,8 +26,6 @@ const Pokedex = ({ data }) => {
             })}
         </div>
     )
-
-
 }
 
 export default Pokedex;

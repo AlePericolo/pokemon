@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import Header from "../common/header";
 import Footer from "../common/footer";
+import Nav from "../common/nav";
 
 const Layout = (props) => {
 
@@ -11,6 +12,7 @@ const Layout = (props) => {
 	return (
 		<>
 			<Header />
+			<Nav />
 			<main role="main" className={`${gender ? gender : ''}`}>
 				<div className="container-fluid py-3">
 					{props.children}

@@ -1,47 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import Dashboard from '../components/dashboard';
-import Pokedex from '../components/pokedex';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { FaUser } from 'react-icons/fa'
 
-const Home = () => {
+import User from '../components/form/user'
 
-    const [nav, setNav] = useState(1)
+import { isNil } from "lodash";
 
-    const renderSection = () => {
-        switch (nav) {
-            case 1:
-                return <Dashboard />;
-            case 2:
-                return <Pokedex />;
-            case 3:
-                return null;
-        }
+const Dashboard = () => {
+
+    const [profile, setProfile] = useState(false)
+    const { name, gender } = useSelector(state => state.app.user)
+
+    const renderContent = () => {
+        if (isNil(name) || isNil(gender) || profile) return <User setProfile={setProfile} />
+
+        return (
+            <div className="w-100 text-center p-sm-5">
+                <p className="h3">Hello <strong>{name}</strong>,</p>
+                <p className="h3">Welcome to the world of POKEMON!</p>
+                <button type="button" className="btn btn-dark mt-4" onClick={() => setProfile(true)}>
+                    <FaUser />
+                </button>
+            </div>
+        )
     }
 
     return (
-        <>
+        <div className="dashboard">
             <div className="row">
-                <div className="col">
-                    <ul className="nav nav-tabs">
-                        <li className="nav-item">
-                            <div className={`nav-link ${nav === 1 ? 'active' : ''}`} role="button" onClick={() => setNav(1)}>Home</div>
-                        </li>
-                        <li className="nav-item">
-                            <div className={`nav-link ${nav === 2 ? 'active' : ''}`} role="button" onClick={() => setNav(2)}>Pokedex</div>
-                        </li>
-                        <li className="nav-item">
-                            <div className={`nav-link ${nav === 3 ? 'active' : ''}`} role="button" onClick={() => setNav(3)}>Search</div>
-                        </li>
-                    </ul>
+                <div className="col-12 col-sm-5 offset-sm-1 text-center">
+                    <img className="img-responsive oak p-3" src="/assets/images/oak.png" />
+                </div>
+                <div className="col-12 col-sm-5">
+                    <div className="card m-sm-5">
+                        <div className="card-body bg-light">
+                            {renderContent()}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    {renderSection()}
-                </div>
-            </div>
-        </>
+        </div>
     )
+};
 
-}
-
-export default Home;
+export default Dashboard;
