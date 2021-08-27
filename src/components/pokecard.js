@@ -22,15 +22,22 @@ const Pokecard = (props) => {
     const renderPokemon = () => {
 
         if (isNil(data)) return null;
+        console.log(data)
 
         const { id, name, sprites, types } = data;
 
-        const type = types[0].type.name;
+        const renderTypes = () => {
+            return ((types || []).map((e, i) => {
+                if (types.length === i +1)
+                    return e.type.name
+                return `${e.type.name} - `
+            }))
+        }
 
         return (
             <div className="col-12 col-md-4 col-lg-2 poke-card" onClick={() => router.push({pathname: `/pokemon/${id}`})}>
             <div className="poke-container">
-                <div className={`pokemon ${type}`}>
+                <div className={`pokemon ${types[0].type.name}`}>
                 <div className="img-container">
                     <img src={sprites.other['official-artwork']['front_default']} alt={name} />
                 </div>
@@ -39,7 +46,7 @@ const Pokecard = (props) => {
                         .toString()
                         .padStart(3, '0')}</span>
                     <h3 className="name">{name}</h3>
-                    <small className="type">Type: <span>{type}</span></small>
+                    <small className="type">Type: <span>{renderTypes()}</span></small>
                 </div>
                 </div>
             </div>
