@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 
-import { getPokemon } from "../../api/rest";
+import { getPokemon } from "@/api/rest";
 
 import { useDispatch } from 'react-redux';
-import { setFavoritePokemon } from "../../store/actions" 
+import { setFavoritePokemon } from "@/store/actions" 
 
-import Abilities from "../../components/abilities"
-import Stats from "../../components/stats"
-import Random from "../../components/random"
-import Paginator from "../../components/paginator"
+import Abilities from "@/components/abilities"
+import Stats from "@/components/stats"
+import Paginator from "@/components/paginator"
 
 export async function getServerSideProps(context) {
 

@@ -39,7 +39,7 @@ module.exports = (phase, { defaultConfig }) => {
 					})
 				);
 				return config;
-			},
+			}
 		},
 		isDev ? devConfig : prodConfig
 	);

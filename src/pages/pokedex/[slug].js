@@ -1,9 +1,10 @@
 import React from 'react';
 import { isNil } from 'lodash';
 
-import { fetchPokemonByPokedex } from "../../api/rest";
+import { fetchPokemonByPokedex } from "@/api/rest";
 
-import Pokecard from "../../components/pokecard"
+import Pokecard from "@/components/pokecard"
+import { getEnLabel } from '@/utils/utils'
 
 export async function getServerSideProps({ params }) {
     const data = await fetchPokemonByPokedex(params.slug)
@@ -13,11 +14,14 @@ export async function getServerSideProps({ params }) {
     }
 }
 
-const Pokemons = ({data}) => {
+const Pokemons = ({ data }) => {
 
-        if (isNil(data)) return null;
+    if (isNil(data)) return null;
 
-        return (
+    console.log(data)
+    return (
+        <>
+            <h2 className="text-center">{getEnLabel(data.names, 'name')}</h2>
             <div className="row">
                 {(data.pokemon_entries || []).map((e, index) => {
                     return (
@@ -25,7 +29,8 @@ const Pokemons = ({data}) => {
                     )
                 })}
             </div>
-        )
+        </>
+    )
 
 
 }

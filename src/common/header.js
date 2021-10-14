@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
 
 import { CgPokemon } from "react-icons/cg";
-import Random from '../components/random';
-import Favorite from '../components/favorite';
+import Random from '@/components/random';
+import Favorite from '@/components/favorite';
 
 const Header = () => {
 

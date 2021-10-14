@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { isNil } from 'lodash';
 import { useRouter } from 'next/router'
 
-import { getPokemon } from "../api/rest";
+import { getPokemon } from "@/api/rest";
 
 const Pokecard = (props) => {
 

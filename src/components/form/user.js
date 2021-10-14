@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
-import { setUserInfo } from "../../store/actions"
+import { setUserInfo } from "@/store/actions"
 
 import { FaSave, FaTrash } from 'react-icons/fa'
 

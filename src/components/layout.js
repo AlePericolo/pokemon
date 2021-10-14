@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Header from "../common/header";
-import Footer from "../common/footer";
-import Nav from "../common/nav";
+import Header from "@/common/header";
+import Footer from "@/common/footer";
+import Nav from "@/common/nav";
 
-const Layout = (props) => {
+function Layout(props) {
 
-	const { gender } = useSelector(state => state.app.user)
+	const { gender } = useSelector(state => state.app.user);
 
 	return (
 		<>
@@ -21,7 +21,7 @@ const Layout = (props) => {
 			<Footer />
 		</>
 	);
-};
+}
 
 
 export default Layout;

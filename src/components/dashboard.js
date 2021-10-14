@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { FaUser } from 'react-icons/fa'
 
-import User from './form/user'
+import User from '@/components/form/user'
 
 import { isNil } from "lodash";
 
