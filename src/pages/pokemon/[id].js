@@ -28,10 +28,11 @@ const Pokemon = ({ data }) => {
     return (
         <div className="container-fluid pokemon">
             <div className="row my-2">
-                <div className="col">
+                <div className="col-4">info</div>
+                <div className="col-4">
                     <div className={`card ${type}`}>
                         <div className="row">
-                            <div className="col-12 col-md-4 p-3">
+                            <div className="col-12">
                                 <div className="image-container">
                                     <img src={data.sprites.other['official-artwork']['front_default']} alt={data.name} width="400"/>
                                 </div>
@@ -56,6 +57,7 @@ const Pokemon = ({ data }) => {
                         </div>
                     </div>
                 </div>
+                <div className="col-4">info</div>
             </div>
             <div className="row">
                 <div className="col">

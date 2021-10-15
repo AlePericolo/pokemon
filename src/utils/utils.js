@@ -9,8 +9,8 @@ export const isNode = () => {
     }
 }
 
-export const getEnLabel = (data, label) => {
+export const getEnLabel = (data, key) => {
     return find(data, function (o) {
         if (o.language.name === "en") return o
-    })[label];
+    })[key] || '';
 }

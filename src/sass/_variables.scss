@@ -21,7 +21,7 @@ $grid-breakpts: (
 .ground { background-color:  #f4e7da };
 .rock { background-color:  #d5d5d4 };
 .fairy { background-color:  #fceaff };
-.poison { background-color:  #98d7a5 };
+.poison { background-color:  #d5a3db };
 .bug { background-color:  #f8d5a3 };
 .dragon { background-color:  #97b3e6 };
 .psychic { background-color:  #eaeda1 };
@@ -37,7 +37,8 @@ $grid-breakpts: (
     background: -webkit-linear-gradient(to right, #aaa5d8, #0a204e);
 	background: linear-gradient(to right, #4c439c9e, #6ebafba6);
 }
-.girl { background-color: rgb(221, 173, 181);
+.girl { 
+	background-color: rgb(221, 173, 181);
     background: -webkit-linear-gradient(to right, #bea0c4, #570950);
 	background: linear-gradient(to right, #bea0c4, #0a204e);
 }

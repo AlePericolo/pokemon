@@ -39,9 +39,9 @@ const Pokecard = (props) => {
                         <img src={sprites.other['official-artwork']['front_default']} alt={name} />
                     </div>
                     <div className="info">
-                        <span className="number">{id
-                            .toString()
-                            .padStart(3, '0')}</span>
+                        <span className="number">
+                            {id.toString().padStart(3, '0')}
+                        </span>
                         <h3 className="name">{name}</h3>
                         <small className="type">Type: <span>{renderTypes()}</span></small>
                     </div>
