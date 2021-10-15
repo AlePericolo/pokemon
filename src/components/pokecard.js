@@ -30,11 +30,12 @@ const Pokecard = (props) => {
     if (isNil(data)) return null;
 
     const { id, name, sprites, types } = data;
+    const type = data.types[0].type.name;
 
     return (
         <div className="col-12 col-md-4 col-lg-2 poke-card" onClick={() => router.push({ pathname: `/pokemon/${id}` })}>
             <div className="poke-container">
-                <div className={`pokemon ${types[0].type.name}`}>
+                <div className={`pokemon bg-${type}`}>
                     <div className="img-container">
                         <img src={sprites.other['official-artwork']['front_default']} alt={name} />
                     </div>
