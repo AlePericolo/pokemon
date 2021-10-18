@@ -7,8 +7,11 @@ import Abilities from '@/components/pokemon/abilities'
 import Stats from '@/components/pokemon/stats'
 import Catch from '@/components/button/catch'
 import Paginator from '@/components/ui/paginator'
+import NotFound from '@/components/ui/notfound'
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+
+import {isNil} from 'lodash';
 
 export async function getServerSideProps(context) {
 
@@ -18,6 +21,8 @@ export async function getServerSideProps(context) {
 }
 
 const PokemonDetail = ({ data }) => {
+    
+    if(isNil(data)) return <NotFound />
 
     const [showAbilities, setShowAbilities] = useState(false)
     const [showStats, setShowStats] = useState(false)

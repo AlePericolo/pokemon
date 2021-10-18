@@ -22,8 +22,11 @@ export const fetchPokemonByPokedex = async (param) => {
 
 export const getPokemon = async (param) => {
 	const res = await fetch(`${API_ENDPOINT}/pokemon/${param}`);
-	const data = await res.json();
-	return data;
+	try {
+        return await res.json();
+    } catch (err) {
+        return null
+    }
 }
 
 export const getPokemonSpecies = async (param) => {
