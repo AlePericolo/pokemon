@@ -1,4 +1,5 @@
-import { find } from 'lodash';
+import { store } from '@/store/store';
+import { isNil, find } from 'lodash';
 
 export const isNode = () => {
     try {
@@ -9,8 +10,11 @@ export const isNode = () => {
     }
 }
 
-export const getEnLabel = (data, key) => {
-    return find(data, function (o) {
-        if (o.language.name === "en") return o
-    })[key] || '';
+export const getLabel = (data, key) => {
+    const obj = find(data, function (o) {
+        if (o.language.name === (store.getState()['app']['config']['language']) || o.language.name === 'en') {
+            return o;
+        }
+    });
+    return isNil(obj) ? 'N.A.' : obj[key]
 }

@@ -7,22 +7,17 @@ const initial = {
 			gender: null
 		},
 		pokemon: {
-			favorite: null
+			team: []
 		},
-		modal: false
+		config: { 
+			language: 'it',
+			modal: false
+		}
 	}
 };
 
 const app = (state = initial.app, action) => {
 	switch (action.type) {
-		case actions.SET_FAVORITE: {
-			return {
-				...state,
-				pokemon: {
-					favorite: action.payload
-				}
-			};
-		}
 		case actions.SET_USER_INFO: {
 			return {
 				...state,
@@ -32,10 +27,28 @@ const app = (state = initial.app, action) => {
 				}
 			};
 		}
-		case actions.MODAL: {
+		case actions.SET_CATCH: {
 			return {
 				...state,
-				modal: action.payload
+				pokemon: {
+					team: [...state.pokemon.team, action.payload]
+				}
+			};
+		}
+		case actions.SET_LANGUAGE: {
+			return {
+				...state,
+				config: {
+					language: action.payload || 'en'
+				}
+			};
+		}
+		case actions.SET_MODAL: {
+			return {
+				...state,
+				config: {
+					modal: action.payload
+				}
 			};
 		}
 		default:

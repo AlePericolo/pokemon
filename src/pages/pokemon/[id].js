@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 import { getPokemon, getPokemonSpecies } from "@/api/rest";
 
-import { useDispatch } from 'react-redux';
-import { setFavoritePokemon } from "@/store/actions"
-
 import { FaCircle } from 'react-icons/fa'
 
-import Abilities from "@/components/abilities"
-import Stats from "@/components/stats"
-import Paginator from "@/components/paginator"
+import Abilities from '@/components/abilities'
+import Stats from '@/components/stats'
+import Catch from '@/components/catch'
+import Paginator from '@/components/paginator'
+import Loader from '@/components/loader'
+
+import { getLabel } from '@/utils/utils'
+
+import { isNil } from 'lodash'
 
 export async function getServerSideProps(context) {
 
@@ -20,8 +23,6 @@ export async function getServerSideProps(context) {
 
 const Pokemon = ({ data }) => {
 
-    const dispatch = useDispatch();
-
     const [showAbilities, setShowAbilities] = useState(false)
     const [showStats, setShowStats] = useState(false)
     const [description, setDescription] = useState(null)
@@ -30,16 +31,21 @@ const Pokemon = ({ data }) => {
     useEffect(() => {
         async function fetch() {
             const response = await getPokemonSpecies(data.species.name)
-            console.log("species ", response)
             const { flavor_text_entries } = response
-            setDescription(flavor_text_entries[0]['flavor_text'])
+            setDescription(getLabel(flavor_text_entries, 'flavor_text'))
         }
 
         fetch()
         setShowAbilities(false)
         setShowStats(false)
+        setDescription(null)
     }, [data])
 
+    const renderDescription = () => {
+        if (isNil(description)) return <Loader />
+
+        return description
+    }
 
     return (
         <div className="container-fluid">
@@ -62,21 +68,19 @@ const Pokemon = ({ data }) => {
                                     <img src={data.sprites.other['official-artwork']['front_default']} alt={data.name} width="400" />
                                 </div>
                             </div>
-                            <div className="col-12">
-                                <p className="description">{description}</p>
+                            <div className="col-12 description">
+                                {renderDescription()}
                             </div>
-                            <div className="col-12 border-top border-dark">
-                                <p>
-                                    <span className="font-weight-bold">Height:</span> {data.height} -
-                                    <span className="font-weight-bold">Weight:</span> {data.weight}
-                                </p>
-                                <button className="btn btn-light mx-1" onClick={() => { setShowAbilities(!showAbilities); }}>Show abilities</button>
-                                <button className="btn btn-light mx-1" onClick={() => { setShowStats(!showStats); }}>Show stats</button>
-                                <button className="btn btn-light mx-1" onClick={() => { dispatch(setFavoritePokemon(data.id)); }}>Set as favorite</button>
-                                <div className="my-2">
-
-
-                                </div>
+                            <div className="col-12 border-top border-dark text-center py-5">
+                                <span className="mx-3"><span className="font-weight-bold">Height:</span> {data.height} </span>
+                                <span className="mx-3"><span className="font-weight-bold">Weight:</span> {data.weight} </span>
+                            </div>
+                            <div className="col-12 pt-4">
+                                <button className="btn btn-light float-left" onClick={() => { setShowAbilities(!showAbilities); }}>abilities</button>
+                                <button className="btn btn-light float-right" onClick={() => { setShowStats(!showStats); }}>stats</button>
+                            </div>
+                            <div className="col-12 catch">
+                                <Catch name={data.name} />
                             </div>
                         </div>
                     </div>

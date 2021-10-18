@@ -4,30 +4,36 @@
         padding: 20px 30px;
         box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
         min-height: 65vh;
-    }
-    .name { 
-        text-transform: capitalize;
-        font-weight: bold;
-        font-size: 2rem;
-    }
-    .image-container {
-        background-color: rgba(255, 255, 255, 0.6);
-        margin: 5px;
-        text-align: center;
-        margin: auto;
-        border: 2px solid $yellow;
-        box-shadow: 5px 2px 2px rgba(0, 0, 0, 0.5);
-        img {
-            max-width: 50%;
-            transition: transform .5s ease;
-            z-index: 5;
+        .name { 
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size: 2rem;
         }
-        img:hover {
-            transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        .image-container {
+            background-color: rgba(255, 255, 255, 0.6);
+            margin: 5px;
+            text-align: center;
+            margin: auto;
+            border: 2px solid $yellow;
+            box-shadow: 5px 2px 2px rgba(0, 0, 0, 0.5);
+            img {
+                max-width: 50%;
+                transition: transform .5s ease;
+                z-index: 5;
+            }
+            img:hover {
+                transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
         }
-    }
-    .description { 
-        padding: 10px;
-        text-align: justify;
+        .description { 
+            padding: 10px;
+            text-align: justify;
+        }
+        .catch { 
+            width: 100%;
+            position: absolute;
+            bottom: 15px;
+            text-align: center;
+        }
     }
 }

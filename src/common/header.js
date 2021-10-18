@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { CgPokemon } from "react-icons/cg";
 import Random from '@/components/random';
-import Favorite from '@/components/favorite';
+import Team from '@/components/team';
 
 const Header = () => {
 
@@ -23,7 +23,7 @@ const Header = () => {
                     </div>
                     <div className="col-6 col-sm-3 m-auto text-right p-sm-2">
                         <Random />
-                        <Favorite />
+                        <Team />
                     </div>
                 </div>
             </div>

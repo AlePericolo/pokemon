@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { getAbility } from "@/api/rest";
-import { getEnLabel } from "@/utils/utils";
+import { getLabel } from "@/utils/utils";
 
 const Abilities = (props) => {
 
@@ -14,10 +14,9 @@ const Abilities = (props) => {
             for(let a of abilities){
                 const response = await getAbility(a.ability.name)
                 const {name, effect_entries} = response
-                console.log("aaaaa", effect_entries)
                 app.push({
                     name: name,
-                    description: getEnLabel(effect_entries,'effect')
+                    description: getLabel(effect_entries,'effect')
                 })
             }
             setAbilitiesInfo(app)

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { FaRegistered } from 'react-icons/fa'
 
 import { getPokedex } from '@/api/rest';
-import { getEnLabel } from '@/utils/utils'
+import { getLabel } from '@/utils/utils'
 
 const Pokedexcard = (props) => {
 
@@ -28,11 +28,11 @@ const Pokedexcard = (props) => {
         <div className="col-12 col-sm-4 col-lg-2 pokedex-card" role="button" onClick={() => router.push(`/pokedex/${data.name}`)}>
             <div className="card text-white bg-danger w-100">
                 <div className="card-header text-center">
-                    {getEnLabel(data.names, 'name')}
+                    {getLabel(data.names, 'name')}
                     {data.is_main_series && <span className="text-warning float-right" title="Main series"><FaRegistered /></span>}
                 </div>
                 <div className="card-body bg-light text-dark">
-                    <p className="card-text">{getEnLabel(data.descriptions, 'description')}</p>
+                    <p className="card-text">{getLabel(data.descriptions, 'description')}</p>
                     <p className="card-text"><b>Total pokemon: </b>{data.pokemon_entries.length}</p>
                 </div>
             </div>

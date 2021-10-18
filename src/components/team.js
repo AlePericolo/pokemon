@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { FaAward } from 'react-icons/fa'
+import { GiSchoolBag } from 'react-icons/gi'
 import { useSelector } from 'react-redux'
 import { isNil } from 'lodash';
 
@@ -15,7 +15,7 @@ const Favorite = () => {
             onClick={() => router.push(`/pokemon/${favorite}`)}
             disabled={isNil(favorite)}
         >
-            <FaAward />
+            <GiSchoolBag />
         </button>
     )
 }

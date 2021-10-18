@@ -10,21 +10,32 @@ export const setUserInfo = (userInfo) => {
 	};
 };
 
-export const setFavoritePokemon = (id) => {
+export const catchPokemon = (name) => {
 	return async (dispatch) => {
 
 		dispatch({
-			type: actions.SET_FAVORITE,
-			payload: id
+			type: actions.SET_CATCH,
+			payload: name
 		});
 	};
 };
+
+export const handleLanguage = (language) => {
+	return async (dispatch) => {
+
+		dispatch({
+			type: actions.SET_LANGUAGE,
+			payload: language
+		});
+
+	};
+}
 
 export const handleModal = (isVisible) => {
 	return async (dispatch) => {
 
 		dispatch({
-			type: actions.MODAL,
+			type: actions.SET_MODAL,
 			payload: isVisible
 		});
 
