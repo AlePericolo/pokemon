@@ -33,7 +33,7 @@ const Pokecard = (props) => {
     const type = data.types[0].type.name;
 
     return (
-        <div className="col-12 col-md-4 col-lg-2 poke-card" onClick={() => router.push({ pathname: `/pokemon/${id}` })}>
+        <div className="col-12 col-md-4 col-lg-2 poke-card" onClick={() => router.push({ pathname: `/pokemon/${name}` })}>
             <div className="poke-container">
                 <div className={`pokemon bg-${type}`}>
                     <div className="img-container">

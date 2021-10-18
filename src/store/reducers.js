@@ -10,7 +10,7 @@ const initial = {
 			team: []
 		},
 		config: { 
-			language: 'it',
+			language: 'en',
 			modal: false
 		}
 	}
@@ -32,6 +32,14 @@ const app = (state = initial.app, action) => {
 				...state,
 				pokemon: {
 					team: [...state.pokemon.team, action.payload]
+				}
+			};
+		}
+		case actions.REMOVE_CATCH: {
+			return {
+				...state,
+				pokemon: {
+					team: state.pokemon.team.filter(e => e !== action.payload)
 				}
 			};
 		}

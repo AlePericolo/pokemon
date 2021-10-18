@@ -32,8 +32,14 @@ export const getPokemonSpecies = async (param) => {
 	return data;
 }
 
-export const getAbility = async (param) => {
+export const getAbilities = async (param) => {
 	const res = await fetch(`${API_ENDPOINT}/ability/${param}`);
+	const data = await res.json();
+	return data;
+}
+
+export const getStats = async (param) => {
+	const res = await fetch(`${API_ENDPOINT}/stat/${param}`);
 	const data = await res.json();
 	return data;
 }

@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@/store/store';
 import { isNode } from '@/utils/utils';
 
-import Layout from "@/components/layout";
+import Layout from "@/components/ui/layout";
 
 import "@/sass/main.scss";
 

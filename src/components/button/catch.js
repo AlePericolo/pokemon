@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-
 import { useDispatch } from 'react-redux';
+
 import { catchPokemon } from '@/store/actions'
 
 import { CgPokemon } from 'react-icons/cg';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { isNil } from 'lodash';
 
-import Pokecard from "@/components/pokecard"
+import Pokecard from "@/components/card/pokecard"
 import { FaRegistered } from 'react-icons/fa'
 
 import { fetchPokemonByPokedex } from "@/api/rest";
@@ -19,7 +19,6 @@ const Pokemons = ({ data }) => {
 
     if (isNil(data)) return null;
 
-    console.log(data)
     return (
         <>
             <h2 className="text-center">

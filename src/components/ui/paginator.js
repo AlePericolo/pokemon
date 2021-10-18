@@ -2,10 +2,10 @@ import React from "react";
 import { useRouter } from 'next/router'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-const Paginator = () => {
+const Paginator = (props) => {
 
     const router = useRouter()
-    const id = parseInt(router.query.id)
+    const {id} = props
 
     return (
         <div className="row">

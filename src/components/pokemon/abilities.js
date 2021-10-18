@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getAbility } from "@/api/rest";
+import { getAbilities } from "@/api/rest";
 import { getLabel } from "@/utils/utils";
 
 const Abilities = (props) => {
@@ -12,10 +12,10 @@ const Abilities = (props) => {
         async function fetch() {
             const app = []
             for(let a of abilities){
-                const response = await getAbility(a.ability.name)
-                const {name, effect_entries} = response
+                const response = await getAbilities(a.ability.name)
+                const {names, effect_entries} = response
                 app.push({
-                    name: name,
+                    name: getLabel(names,'name'),
                     description: getLabel(effect_entries,'effect')
                 })
             }

@@ -20,6 +20,18 @@ export const catchPokemon = (name) => {
 	};
 };
 
+export const removeCatchedPokemon = (name) => {
+	return async (dispatch) => {
+
+		dispatch({
+			type: actions.REMOVE_CATCH,
+			payload: name
+		});
+	};
+};
+
+
+
 export const handleLanguage = (language) => {
 	return async (dispatch) => {
 

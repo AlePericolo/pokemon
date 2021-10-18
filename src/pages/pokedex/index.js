@@ -3,7 +3,7 @@ import { isNil } from 'lodash';
 
 import { fetchPokedex } from "@/api/rest";
 
-import Pokedexcard from "@/components/pokedexcard"
+import Pokedexcard from "@/components/card/pokedexcard"
 
 export async function getServerSideProps() {
     const data = await fetchPokedex()
