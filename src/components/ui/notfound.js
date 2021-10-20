@@ -1,9 +1,19 @@
 import React from 'react'
+import useDimensions from 'react-cool-dimensions';
+import Image from 'next/image'
 
-const NotFound = () => {
+const NotFound = (props) => {
+
+    const { observe, width } = useDimensions();
+
     return (
-        <div className="col text-center">
-            <img className="img-responsive oak m-5" src="/assets/images/missigno.png" />
+        <div ref={observe}>
+            <Image 
+                src="/assets/images/missigno.png" 
+                alt="Picture of something nice"
+    layout="fill"
+    objectFit="contain"
+                />
         </div>
     )
 }
