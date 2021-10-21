@@ -1,9 +1,11 @@
 import React from 'react';
-import { isNil } from 'lodash';
+
+import Title from "@/components/ui/title";
+import Pokedexcard from "@/components/card/pokedexcard"
 
 import { fetchPokedex } from "@/api/rest";
 
-import Pokedexcard from "@/components/card/pokedexcard"
+import { isNil } from 'lodash';
 
 export async function getServerSideProps() {
     const data = await fetchPokedex()
@@ -18,13 +20,16 @@ const Pokedex = ({ data }) => {
     if (isNil(data)) return null;
 
     return (
-        <div className="row">
-            {(data.results || []).map((e, index) => {
-                return (
-                    <Pokedexcard key={index} name={e.name} />
-                )
-            })}
-        </div>
+        <>
+            <Title title="Pokedex" />
+            <div className="row">
+                {(data.results || []).map((e, index) => {
+                    return (
+                        <Pokedexcard key={index} name={e.name} />
+                    )
+                })}
+            </div>
+        </>
     )
 }
 

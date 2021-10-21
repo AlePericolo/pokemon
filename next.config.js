@@ -23,6 +23,10 @@ module.exports = (phase, { defaultConfig }) => {
 		defaultConfig,
 		{
 			poweredByHeader: false,
+			images: {
+				inlineImageLimit: -1,
+				domains: ['raw.githubusercontent.com']
+			},
 			sassOptions: {
 				includePaths: [path.join(__dirname, "sass")],
 			},

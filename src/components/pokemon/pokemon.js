@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { getPokemonSpecies } from "@/api/rest";
 
+import Image from 'next/image'
 import Loader from '@/components/ui/loader'
 import { FaCircle } from 'react-icons/fa'
 
@@ -42,7 +43,12 @@ const Pokemon = (props) => {
             </div>
             <div className="col-12">
                 <div className="image-container">
-                    <img src={pokemon.sprites.other['official-artwork']['front_default']} alt={pokemon.name} width="400" />
+                    <Image 
+                        src={pokemon.sprites.other['official-artwork']['front_default']} 
+                        alt={pokemon.name} 
+                        width={250} 
+                        height={250} 
+                    />
                 </div>
             </div>
             <div className="col-12 description">

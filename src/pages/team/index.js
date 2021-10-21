@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getPokemon } from "@/api/rest";
 
+import Title from "@/components/ui/title";
 import Pokemon from "@/components/pokemon/pokemon";
 import Info from '@/components/button/info'
 import Remove from '@/components/button/remove'
@@ -42,6 +43,7 @@ const Team = () => {
 
     return (
         <>
+            <Title title="Team" />
             <h1 className="text-center">Your Team:</h1>
             <div className="row">
                 {renderTeam()}

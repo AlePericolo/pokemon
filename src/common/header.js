@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
 
+import Image from 'next/image'
 import { CgPokemon } from "react-icons/cg";
 import Random from '@/components/button/random';
 import Team from '@/components/button/team';
@@ -19,7 +20,14 @@ const Header = () => {
                         <CgPokemon />PokèApp: {name}
                     </div>
                     <div className="col-6 col-sm-4 text-center">
-                        <img className="img-responsive p-sm-3" src="/assets/images/logo.png" role="button" onClick={() => router.push('/')} />
+                        <Image 
+                            className="img-responsive p-sm-3" 
+                            src="/assets/images/logo.png"
+                            width={100}
+                            height={50} 
+                            role="button" 
+                            onClick={() => router.push('/')} 
+                        />
                     </div>
                     <div className="col-6 col-sm-3 m-auto text-right p-sm-2">
                         <Random />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { isNil } from 'lodash';
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import { getPokemon } from "@/api/rest";
 
@@ -37,7 +38,12 @@ const Pokecard = (props) => {
             <div className="poke-container">
                 <div className={`pokemon bg-${type}`}>
                     <div className="img-container">
-                        <img src={sprites.other['official-artwork']['front_default']} alt={name} />
+                        <Image 
+                            src={sprites.other['official-artwork']['front_default']} 
+                            alt={name} 
+                            width={"150"}
+                            height={"150"}
+                            />
                     </div>
                     <div className="info">
                         <span className="number">

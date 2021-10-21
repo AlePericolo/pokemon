@@ -1,19 +1,16 @@
 import React from 'react'
-import useDimensions from 'react-cool-dimensions';
 import Image from 'next/image'
 
-const NotFound = (props) => {
-
-    const { observe, width } = useDimensions();
+const NotFound = () => {
 
     return (
-        <div ref={observe}>
+        <div className="d-block w-100 text-center">
             <Image 
                 src="/assets/images/missigno.png" 
-                alt="Picture of something nice"
-    layout="fill"
-    objectFit="contain"
-                />
+                alt="Missigno"
+                width={600} 
+                height={600}
+            />
         </div>
     )
 }
