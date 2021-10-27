@@ -1,33 +1,30 @@
 import React from 'react';
 
 import Title from "@/components/ui/title";
-import Pokedexcard from "@/components/card/pokedexcard"
+import Placeholder from "@/components/ui/placeholder";
+import NotFound from "@/components/ui/notfound";
+import Error from "@/components/ui/error";
+import Pokedexcard from "@/components/card/pokedexcard";
 
-import { fetchPokedex } from "@/api/rest";
+import {fetchPokedex} from "@/api/rest";
 
 import { isNil } from 'lodash';
 
-export async function getServerSideProps() {
-    const data = await fetchPokedex()
+const Pokedex = () => {
 
-    return {
-        props: { data },
-    }
-}
+    const { data, error, load } = fetchPokedex()
 
-const Pokedex = ({ data }) => {
-
-    if (isNil(data)) return null;
+    if(load) return <Placeholder />
+    if (isNil(data)) return <NotFound />
+    if (!isNil(error)) return <Error />
 
     return (
         <>
             <Title title="Pokedex" />
             <div className="row">
-                {(data.results || []).map((e, index) => {
-                    return (
-                        <Pokedexcard key={index} name={e.name} />
-                    )
-                })}
+                {(data.results || []).map((e, index) => 
+                    <Pokedexcard key={index} name={e.name} />
+                )}
             </div>
         </>
     )

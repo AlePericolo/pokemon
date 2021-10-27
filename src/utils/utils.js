@@ -11,10 +11,18 @@ export const isNode = () => {
 }
 
 export const getLabel = (data, key) => {
-    const obj = find(data, function (o) {
-        if (o.language.name === (store.getState()['app']['config']['language']) || o.language.name === 'en') {
+    let obj = find(data, function (o) {
+        if (o.language.name === (store.getState()['app']['config']['language'])) {
             return o;
         }
     });
-    return isNil(obj) ? 'N.A.' : obj[key]
+    if (isNil(obj)) {
+        obj = find(data, function (o) {
+            if (o.language.name === 'en') {
+                return o;
+            }
+        });
+    } 
+
+    return isNil(obj) || obj[key].length === 0 ? 'N.A.' : obj[key]
 }

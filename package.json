@@ -3,12 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"rmbuild": "rimraf ./build",
 		"dev": "next dev",
-		"build": "npm run rmbuild && npx next build",
 		"start": "next start",
 		"lint": "next lint",
-		"static-build": "next build && next export -o build/static",
+		"build": "npm run rimraf ./build && npx next build",
+		"static-build": "npm run rimraf ./build && next build && next export -o build/static",
 		"export": "next build && next export"
 	},
 	"dependencies": {
@@ -28,7 +27,8 @@
 		"redux-logger": "^3.0.6",
 		"redux-persist": "^6.0.0",
 		"redux-thunk": "^2.3.0",
-		"sass": "^1.26.10"
+		"sass": "^1.26.10",
+		"swr": "^1.0.1"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { getPokemonSpecies } from "@/api/rest";
+import { getSpecies } from "@/api/rest";
 
 import Image from 'next/image'
 import Loader from '@/components/ui/loader'
@@ -13,18 +13,18 @@ import { isNil } from 'lodash'
 const Pokemon = (props) => {
 
     const { pokemon, type } = props
+
+    const { data } = getSpecies(pokemon.species.name)
+
     const [description, setDescription] = useState(null)
 
     useEffect(() => {
-        async function fetch() {
-            const response = await getPokemonSpecies(pokemon.species.name)
-            const { flavor_text_entries } = response
-            setDescription(getLabel(flavor_text_entries, 'flavor_text'))
-        }
+        if(isNil(data)) return
 
-        fetch()
-        setDescription(null)
-    }, [pokemon])
+        const { flavor_text_entries } = data
+        setDescription(getLabel(flavor_text_entries, 'flavor_text'))
+        
+    }, [data])
 
     const renderDescription = () => {
         if (isNil(description)) return <Loader />
@@ -47,7 +47,7 @@ const Pokemon = (props) => {
                         src={pokemon.sprites.other['official-artwork']['front_default']} 
                         alt={pokemon.name} 
                         width={250} 
-                        height={250} 
+                        height={300} 
                     />
                 </div>
             </div>

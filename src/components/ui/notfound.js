@@ -11,6 +11,7 @@ const NotFound = () => {
                 width={600} 
                 height={600}
             />
+            <h3>???</h3>
         </div>
     )
 }

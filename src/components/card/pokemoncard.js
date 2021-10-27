@@ -1,48 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { isNil } from 'lodash';
+import React from 'react';
 import { useRouter } from 'next/router'
+
+import Placeholder from "@/components/ui/placeholder";
+import NotFound from "@/components/ui/notfound";
+import Error from "@/components/ui/error";
 import Image from 'next/image'
 
 import { getPokemon } from "@/api/rest";
 
-const Pokecard = (props) => {
+import { isNil } from 'lodash';
+
+const Pokemoncard = (props) => {
 
     const router = useRouter()
 
-    const [data, setData] = useState(null)
-
-    useEffect(() => {
-        fetchData(props.name);
-    }, [props.name]);
-
-    const fetchData = async (name) => {
-        const data = await getPokemon(name);
-        setData(data);
-    }
+    const { data, error, load } = getPokemon(props.name)
 
     const renderTypes = () => {
-        return ((types || []).map((e, i) => {
-            if (types.length === i + 1)
+        return ((data.types || []).map((e, i) => {
+            if (data.types.length === i + 1)
                 return e.type.name
             return `${e.type.name} - `
         }))
     }
 
-    if (isNil(data)) return null;
+    const renderContent = () => {
+        if (load) return <Placeholder />
+        if (isNil(data)) return <NotFound />
+        if (!isNil(error)) return <Error />
 
-    const { id, name, sprites, types } = data;
-    const type = data.types[0].type.name;
+        const { id, name, sprites } = data;
+        const type = data.types[0].type.name;
 
-    return (
-        <div className="col-12 col-md-4 col-lg-2 poke-card" onClick={() => router.push({ pathname: `/pokemon/${name}` })}>
+        return (
+            <div className="poke-card" onClick={() => router.push({ pathname: `/pokemon/${name}` })}>
             <div className="poke-container">
                 <div className={`pokemon bg-${type}`}>
                     <div className="img-container">
                         <Image 
                             src={sprites.other['official-artwork']['front_default']} 
                             alt={name} 
-                            width={"150"}
-                            height={"150"}
+                            width={100}
+                            height={100}
                             />
                     </div>
                     <div className="info">
@@ -55,7 +54,14 @@ const Pokecard = (props) => {
                 </div>
             </div>
         </div>
+        )
+    }
+
+    return (
+        <div className="col-12 col-md-4 col-lg-2">
+            {renderContent()}
+        </div>
     )
 }
 
-export default Pokecard;
+export default Pokemoncard;

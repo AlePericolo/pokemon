@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from "@/components/ui/title";
-import NotFound from '@/components/ui/notFound'
+import NotFound from '@/components/ui/notfound'
 
 export default function Custom404() {
     return (

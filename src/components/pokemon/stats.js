@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { getStats } from "@/api/rest";
 import { getLabel } from "@/utils/utils";
 
+import { isNil } from 'lodash'
+
 const Stats = (props) => {
 
     const { visible, stats } = props
-    const [statsInfo, setStatsInfo] = useState(null)
+    const statsInfo = []
 
-    useEffect(() => {
-        async function fetch() {
-            const app = []
-            for(let s of stats){
-                const response = await getStats(s.stat.name)
-                const {names} = response
-                app.push({
-                    name: getLabel(names,'name'),
-                    base_stat: s.base_stat,
-                })
-            }
-            setStatsInfo(app)
+    for (let s of stats) {
+        const { data } = getStats(s.stat.name)
+        if (!isNil(data)) {
+            statsInfo.push({
+                name: getLabel(data.names, 'name'),
+                base_stat: s.base_stat
+            })
         }
-
-        fetch()
-    }, [stats])
+    }
 
     return (
         <div className={visible ? 'd-block' : 'd-none'}>

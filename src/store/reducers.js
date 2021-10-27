@@ -47,7 +47,7 @@ const app = (state = initial.app, action) => {
 			return {
 				...state,
 				config: {
-					language: action.payload || 'en'
+					language: action.payload
 				}
 			};
 		}

@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
-
-import { getPokemon } from "@/api/rest";
+import useSwr from 'swr';
+import { useRouter } from 'next/router'
 
 import Title from "@/components/ui/title";
+import Placeholder from "@/components/ui/placeholder";
+import Error from "@/components/ui/error";
 import Pokemon from "@/components/pokemon/pokemon";
 import Abilities from '@/components/pokemon/abilities'
 import Stats from '@/components/pokemon/stats'
 import Catch from '@/components/button/catch'
 import Paginator from '@/components/ui/paginator'
-import NotFound from '@/components/ui/notfound'
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 import { isNil } from 'lodash';
 
-export async function getServerSideProps(context) {
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
-    const data = await getPokemon(context.params.id)
+const PokemonDetail = () => {
 
-    return { props: { data } };
-}
-
-const PokemonDetail = ({ data }) => {
-
-    if (isNil(data)) return <NotFound />
+    const router = useRouter()
+    const { id } = router.query
 
     const [showAbilities, setShowAbilities] = useState(false)
     const [showStats, setShowStats] = useState(false)
+
+    const { data, error } = useSwr(`${API_ENDPOINT}/pokemon/${id}`, fetcher)
+
+    if (isNil(data)) return <Placeholder />
+    if (!isNil(error)) return <Error />
+
+  
     const type = data.types[0].type.name;
 
     return (
