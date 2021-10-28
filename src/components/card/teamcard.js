@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Placeholder from "@/components/ui/placeholder";
+import Loader from "@/components/ui/loader";
 import NotFound from "@/components/ui/notfound";
 import Error from "@/components/ui/error";
 import Pokemon from "@/components/pokemon/pokemon";
@@ -15,7 +15,7 @@ const Teamcard = (props) => {
 
     const { data, error, load } = getPokemon(props.name)
 
-    if (load) return <Placeholder />
+    if (load) return <Loader />
     if (isNil(data)) return <NotFound />
     if (!isNil(error)) return <Error />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router'
 
-import Placeholder from "@/components/ui/placeholder";
+import Loader from "@/components/ui/loader";
 import NotFound from "@/components/ui/notfound";
 import Error from "@/components/ui/error";
 import Image from 'next/image'
@@ -25,7 +25,7 @@ const Pokemoncard = (props) => {
     }
 
     const renderContent = () => {
-        if (load) return <Placeholder />
+        if (load) return <Loader />
         if (isNil(data)) return <NotFound />
         if (!isNil(error)) return <Error />
 
