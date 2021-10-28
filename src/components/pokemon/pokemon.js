@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 
 import { getSpecies } from "@/api/rest";
 
@@ -12,6 +13,7 @@ import { isNil } from 'lodash'
 
 const Pokemon = (props) => {
 
+    const { language } = useSelector(state => state.app.config)
     const { pokemon, type } = props
 
     const { data } = getSpecies(pokemon.species.name)
@@ -24,7 +26,7 @@ const Pokemon = (props) => {
         const { flavor_text_entries } = data
         setDescription(getLabel(flavor_text_entries, 'flavor_text'))
         
-    }, [data])
+    }, [data, language])
 
     const renderDescription = () => {
         if (isNil(description)) return <Loader />

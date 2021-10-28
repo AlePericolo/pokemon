@@ -10,7 +10,13 @@ export const isNode = () => {
     }
 }
 
-export const getLabel = (data, key) => {
+export const translator = (entity, value) => {
+    const lan = store.getState()['app']['config']['language']
+    const translate =  require(`../../public/locales/${lan}/translation.json`);
+    return (entity in translate && translate[entity][value]) ? translate[entity][value] : value;
+}
+
+export const getLabel = (data, key, lang) => {
     let obj = find(data, function (o) {
         if (o.language.name === (store.getState()['app']['config']['language'])) {
             return o;

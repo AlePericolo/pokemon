@@ -13,13 +13,13 @@ header {
 }
 
 main{
-    min-height: calc(100vh - 155px); 
+    min-height: calc(100vh - 175px); 
 }
 
 footer {
     background-color: $red;
     color: $yellow;
-    height: 30px; 
+    height: 50px; 
     text-align: center;
     padding: 5px 0;
     font-size: 1rem;

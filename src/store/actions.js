@@ -30,8 +30,6 @@ export const removeCatchedPokemon = (name) => {
 	};
 };
 
-
-
 export const handleLanguage = (language) => {
 	return async (dispatch) => {
 

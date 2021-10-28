@@ -30,7 +30,6 @@ const PokemonDetail = () => {
     if (isNil(data)) return <Placeholder />
     if (!isNil(error)) return <Error />
 
-  
     const type = data.types[0].type.name;
 
     return (

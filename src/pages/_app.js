@@ -5,6 +5,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@/store/store';
 import { isNode } from '@/utils/utils';
 
+import { appWithTranslation } from 'next-i18next';
+
 import Layout from "@/components/ui/layout";
 
 import "@/sass/main.scss";
@@ -13,7 +15,7 @@ const WrapperSSR = (props) => {
 	return isNode() ? props.children : <PersistGate loading={<div>Loading...</div>} persistor={persistor}>{props.children}</PersistGate>
 }
 
-function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
 	return (
 		<Provider store={store}>
 			<WrapperSSR>
@@ -24,5 +26,4 @@ function App({ Component, pageProps }) {
 		</Provider>
 	);
 }
-
-export default App;
+export default appWithTranslation(App);

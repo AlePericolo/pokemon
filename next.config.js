@@ -2,6 +2,8 @@ const path = require("path");
 const _ = require("lodash");
 const webpack = require("webpack");
 
+const { i18n } = require('./next-i18next.config');
+
 const API_ENDPOINT = process.env.API_ENDPOINT;
 
 const isDev = process.env.NODE_ENV != "production";
@@ -23,6 +25,7 @@ module.exports = (phase, { defaultConfig }) => {
 		defaultConfig,
 		{
 			poweredByHeader: false,
+			i18n,
 			images: {
 				inlineImageLimit: -1,
 				domains: ['raw.githubusercontent.com']
